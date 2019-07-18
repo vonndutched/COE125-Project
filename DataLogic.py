@@ -18,27 +18,27 @@ class Data_Logic:
         self.connection.commit() #Equivalent to file.close
         return False
     
-    def PasswordCheck(self,Username,Password):
+    def PasswordCheck(self,Password):
         self.cursor.execute("SELECT * FROM Users")
         AllRows = self.cursor.fetchall()
-        Message = "Incorrect Password"
+        #Message = "Incorrect Password"
         for row in AllRows:
-            if (str(row[0]) == Username):
-                if(str(row[1] == Password)):
-                    Message = str(row[2] + " " + row[3])
+            if (str(row[0]) == self.User):
+                if(str(row[1]) == Password):
+                    #Message = str(row[2] + " " + row[3])
                     self.connection.commit()
                     return True
         self.connection.commit()
         return False
     
-    def GetName(self,Username,Password):
+    def GetName(self,Password):
         self.cursor.execute("SELECT * FROM Users")
         AllRows = self.cursor.fetchall()
         Message = ""
         for row in AllRows:
-            if (str(row[0]) == Username):
-                if(str(row[1] == Password)):
-                    Message = str(row[2] + " " + row[3])
+            if (str(row[0]) == self.User):
+                if(str(row[1]) == Password):
+                    Message = str(row[2]) + " " + str(row[3])
                     self.connection.commit()
                     return Message
                 else:
@@ -49,6 +49,6 @@ class Data_Logic:
     def AddUser(self,Username,Password,First_Name,Last_Name):
         self.cursor.execute('Insert INTO Users(USERNAME, PASSWORD, FIRST_NAME, LAST_NAME) VALUES(?,?,?,?)',(Username,Password,First_Name,Last_Name))
         self.connection.commit()
-        Message = "Added new user!"
+        Message = "Added New User!"
         return Message
     
