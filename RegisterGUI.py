@@ -128,7 +128,6 @@ class Ui_RegisterWindow(object):
         self.pushButton_Register.clicked.connect(self.RegisterUser)
         self.pushButton_Cancel.clicked.connect(self.GoToLoginWin)
         
-        
         self.RegisterBL = Register_BL()
  
         self.retranslateUi(RegisterWindow)
@@ -152,8 +151,6 @@ class Ui_RegisterWindow(object):
         self.Label_Password.setText(_translate("RegisterWindow", "Password:"))
         self.Label_StatusSignUp.setText(_translate("RegisterWindow", "Status"))
         self.Label_StatusSignUp.hide()
-        
-        self.pushButton_Cancel.hide()
         
     def RegisterUser(self):
         self.Label_StatusSignUp.show()
